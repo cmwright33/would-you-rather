@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import  Home  from './Home.js';
 import  Nav  from './Nav.js';
+import  Login  from './Login.js';
 
 class App extends Component {
   componentDidMount() {
@@ -12,10 +13,11 @@ class App extends Component {
     return (
       <div>
         <Nav/>
-        {this.props.loggedOut === true
-          ? null
-          : 
-          <Home />}
+        {this.props.isLoggedIn ? null ( 
+          <Login />
+        ) : (
+          <Home />
+        )}
       </div>
     )
   }
@@ -23,7 +25,7 @@ class App extends Component {
 
   function mapStateToProps ( { authedUser } ) {
     return {
-      loggedOut: authedUser === null 
+      isLoggedIn: authedUser === null 
     }
   }
 
