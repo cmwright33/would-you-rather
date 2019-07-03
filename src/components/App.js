@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
+import  Home  from './Home.js';
+import  Nav  from './Nav.js';
 
 class App extends Component {
   componentDidMount() {
@@ -9,10 +11,20 @@ class App extends Component {
   render() {
     return (
       <div>
-        Starter Code
+        <Nav/>
+        {this.props.loggedOut === true
+          ? null
+          : 
+          <Home />}
       </div>
     )
   }
 }
 
-export default connect()(App)
+  function mapStateToProps ( { authedUser } ) {
+    return {
+      loggedOut: authedUser === null 
+    }
+  }
+
+export default connect(mapStateToProps)(App)
