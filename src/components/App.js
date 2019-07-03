@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import  Home  from './Home.js';
+import  NewQuestion  from './NewQuestion.js';
 import  Nav  from './Nav.js';
 import  Login  from './Login.js';
 
@@ -16,7 +17,7 @@ class App extends Component {
         {this.props.isLoggedIn ? ( 
           <Login />
         ) : (
-          <Home />
+          <NewQuestion />
         )}
       </div>
     )
