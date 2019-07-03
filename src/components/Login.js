@@ -6,7 +6,7 @@ import { setAuthedUser } from '../actions/authedUser'
 class Login extends Component {
 
 	state = {
-	    userSelected: '',
+	    userSelected: null,
   	}
 
 	handleChange = (event) => {
@@ -31,7 +31,7 @@ class Login extends Component {
 		return(
 			<div>
 				<h3>Log In</h3>
-				<select onChange={this.handleChange} value={this.state.userSelected}>
+				<select onChange={this.handleChange} defaultValue=''>
 				 {
 					Object.values(this.props.usersSelect).map( (user) => {
 					  return <option key={user.id} value={user.id}> { user.id } </option>
@@ -44,9 +44,10 @@ class Login extends Component {
 	}
 
 }
-	function mapStateToProps ( { users } ) {
+	function mapStateToProps ( { users , authedUser} ) {
 		return {
-			usersSelect: users
+			usersSelect: users,
+			authedUser : authedUser
 		}
 	}
 

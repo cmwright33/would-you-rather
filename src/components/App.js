@@ -13,7 +13,7 @@ class App extends Component {
     return (
       <div>
         <Nav/>
-        {this.props.isLoggedIn ? null ( 
+        {this.props.isLoggedIn ? ( 
           <Login />
         ) : (
           <Home />
