@@ -8,6 +8,7 @@ import reducer from './reducers'
 import * as serviceWorker from './serviceWorker';
 import middleware from './middleware'
 
+
 const store = createStore(reducer, middleware)
 
 
