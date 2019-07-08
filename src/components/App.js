@@ -16,7 +16,7 @@ class App extends Component {
       <div>
         <Router>
         <Nav/>
-        {this.props.isLoggedIn ? ( 
+        { this.props.isLoggedIn ? ( 
           <Login />
         ) : (
         <Fragment>
@@ -31,9 +31,9 @@ class App extends Component {
   }
 }
 
-  function mapStateToProps ( { authedUser } ) {
+  function mapStateToProps ( { authedUser, users } ) {
     return {
-      isLoggedIn: authedUser === null 
+      isLoggedIn: authedUser === null
     }
   }
 

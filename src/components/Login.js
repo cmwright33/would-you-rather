@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { setAuthedUser } from '../actions/authedUser'
+import { Redirect } from 'react-router-dom'
 
 
 class Login extends Component {
 
 	state = {
 	    userSelected: null,
+	    toHome: false
   	}
 
 	handleChange = (event) => {
@@ -23,11 +25,17 @@ class Login extends Component {
 
 		this.setState(() => ({
 			userSelected: '',
+			toHome: true
 		}))
 
 	}
 
 	render(){
+
+		if (this.state.toHome === true) {
+	      return <Redirect to='/' />
+	    }
+
 		return(
 			<div>
 				<h3>Log In</h3>

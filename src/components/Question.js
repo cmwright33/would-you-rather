@@ -6,7 +6,6 @@ import { Link, withRouter } from 'react-router-dom'
 class Question extends Component {
 
 	render(){
-		console.log(this.props)
 		return(
 
 			<div className="question">
