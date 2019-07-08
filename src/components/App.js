@@ -5,6 +5,7 @@ import  Home  from './Home.js';
 import  NewQuestion  from './NewQuestion.js';
 import  Nav  from './Nav.js';
 import  Login  from './Login.js';
+import  QuestionPage  from './QuestionPage.js';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 class App extends Component {
@@ -23,6 +24,7 @@ class App extends Component {
           <Route path='/' exact component={Home} />
           <Route path='/new'  component={NewQuestion} />
           <Route path='/login' component={Login} />
+          <Route path='/question/:id' component={QuestionPage} />
         </Fragment>  
           )}
        </Router>
