@@ -58,6 +58,7 @@ class Question extends Component {
 		const author = users[question.author]
 
 		return {
+			users,
 			authedUser,
 			question: question,
 			author: author

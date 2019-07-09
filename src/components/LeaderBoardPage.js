@@ -3,12 +3,12 @@ import { connect } from 'react-redux'
 import Question from "./Question.js";
 
 
-class QuestionPage extends Component {
+class LeaderBoard extends Component {
 
 	render(){
 		return(
 			<div>
-				<Question id = {this.props.match.params.id} />
+				<h2>LeaderBoard</h2>
 			</div>
 			)
 	}
@@ -23,4 +23,4 @@ class QuestionPage extends Component {
 
 
 
-export default connect(mapStateToProps)(QuestionPage);
+export default connect(mapStateToProps)(LeaderBoard);
