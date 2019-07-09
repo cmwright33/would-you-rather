@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleAddQuestion  } from '../actions/shared'
+import { Link, withRouter, Redirect } from 'react-router-dom'
 
 
 class NewQuestion extends Component {
@@ -9,7 +10,8 @@ class NewQuestion extends Component {
 	state ={
 		optionOneText: '',
 		optionTwoText: '',
-		author: this.props.author
+		author: this.props.author,
+		toHome: false,
 		
 	}
 
@@ -28,6 +30,7 @@ class NewQuestion extends Component {
 			
 		}
 
+
 	}
 
 
@@ -41,14 +44,20 @@ class NewQuestion extends Component {
 	    dispatch(handleAddQuestion({ optionOneText, optionTwoText , author }))
 
 	    this.setState(() => ({
-	      optionOneText: '' , optionTwoText: ''
+	      optionOneText: '' , optionTwoText: '', toHome: true
 	    }))
 
 
 	}
 
 	render(){
-		console.log(this.state)
+		   const { toHome } = this.state
+
+
+		   if (toHome === true) {
+		      return <Redirect to='/' />
+		    }
+
 		return(
 			<div className="newQuestion">
 				<h2>Create New Question </h2>
