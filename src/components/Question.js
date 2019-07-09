@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
-import { handleAnswerQuestion  } from '../actions/questions'
+import { handleAnswerQuestion  } from '../actions/shared'
 
 
 class Question extends Component {

@@ -1,6 +1,6 @@
-import { getInitialData } from '../utils/api'
-import { receiveUsers } from '../actions/users'
-import { receiveQuestions } from '../actions/questions'
+import { getInitialData , saveQuestion, saveQuestionAnswer} from '../utils/api'
+import { receiveUsers , addQuestionUser , answerQuestionByUser } from '../actions/users'
+import { receiveQuestions , addQuestion , answerQuestion} from '../actions/questions'
 import { setAuthedUser } from '../actions/authedUser'
 
 const AUTHED_ID = 'sarahedo';
@@ -14,4 +14,33 @@ export function handleInitialData () {
         dispatch(receiveQuestions(questions))
       })
   }
+}
+
+
+export function handleAddQuestion (question) {
+  return (dispatch, getState) => {
+    const { authedUser } = getState()
+
+    return saveQuestion(question)
+      .then((question) => {
+      	dispatch(addQuestion(question)) 
+      	dispatch(addQuestionUser(question)) 
+      })
+  }
+}
+
+
+
+export function handleAnswerQuestion (answer){
+
+	return(dispatch, getState) => {
+		const { authedUser } = getState()
+		const question = { authedUser, ...answer }
+		return saveQuestionAnswer(question)
+		.then((question) => {
+				dispatch(answerQuestion(question))
+				dispatch(answerQuestionByUser(question))
+			}
+		)
+	}
 }

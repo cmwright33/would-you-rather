@@ -6,8 +6,6 @@ import Question from "./Question.js";
 class Home extends Component {
 
 	render(){
-		console.log(this.props.answeredQuestions)
-		console.log(this.props)
 		return(
 			<div>
 				<ul>
@@ -22,7 +20,7 @@ class Home extends Component {
 }
 	function mapStateToProps ( { questions, users, authedUser } ) {
 
-		console.log(users[authedUser]);
+		// console.log(users[authedUser]);
 		// const questionsAnswered = users[authedUser] !== undefined ? [] : Object.keys(users[authedUser].answers)
 		
 		
