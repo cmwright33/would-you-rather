@@ -6,11 +6,13 @@ import Question from "./Question.js";
 class Home extends Component {
 
 	render(){
+		console.log(this.props.authUserAnswers)
+
 		return(
 			<div>
 				<ul>
-					{this.props.questionIds.map( (id) => (
-						<Question key = { id }id = { id }/>
+					{this.props.authUserAnswers.map( (id) => (
+						<Question key = { id } id = { id }/> 
 					))}
 				</ul>
 			</div>
@@ -20,14 +22,11 @@ class Home extends Component {
 }
 	function mapStateToProps ( { questions, users, authedUser } ) {
 
-		// console.log(users[authedUser]);
-		// const questionsAnswered = users[authedUser] !== undefined ? [] : Object.keys(users[authedUser].answers)
-		
 		
 		return {
 			questionIds: Object.keys(questions),
 			users: users,
-			answeredQuestions: 'questionsAnswered'
+			authUserAnswers: users[authedUser] === undefined ? [] : Object.keys(users[authedUser].answers)
 		}
 	}
 
