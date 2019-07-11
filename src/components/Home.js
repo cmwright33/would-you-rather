@@ -1,18 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Question from "./Question.js";
+import QuestionCard from "./QuestionCard.js";
 
 
 class Home extends Component {
 
 	render(){
-		console.log(this.props.authUserAnswers)
-
 		return(
 			<div>
 				<ul>
-					{this.props.authUserAnswers.map( (id) => (
-						<Question key = { id } id = { id }/> 
+					{this.props.questionIds.map( (id) => (
+						<QuestionCard key = { id } id = { id }/> 
 					))}
 				</ul>
 			</div>

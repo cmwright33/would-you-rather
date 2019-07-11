@@ -4,7 +4,7 @@ import { Link, withRouter } from 'react-router-dom'
 import { handleAnswerQuestion  } from '../actions/shared'
 
 
-class Question extends Component {
+class QuestionCard extends Component {
 
 	state = {
 
@@ -28,6 +28,7 @@ class Question extends Component {
 
 	}
 	render(){
+		console.log(this.props.answered);
 		return(
 
 			<div className="question">
@@ -35,12 +36,12 @@ class Question extends Component {
 				<div> {this.props.author.name} </div>
 				<form className='save-question' onSubmit={this.handleSubmit}>
 					<div>
-						<input onChange={this.handleChange} type="radio" id="radio-nine" name="notaswitch-two" value="optionOne" />
-						<label for="radio-nine">{this.props.question.optionOne.text}</label><br />
+						<input onChange={this.handleChange} type="radio" id="radio-one" name="notaswitch-two" value="optionOne" />
+						<label htmlFor="radio-nine">{this.props.question.optionOne.text}</label><br />
 					</div>
 					<div> 
-						<input onChange={this.handleChange} type="radio" id="radio-nine" name="notaswitch-two" value="optionTwo" />
-						<label for="radio-nine">{this.props.question.optionTwo.text}</label><br />
+						<input onChange={this.handleChange} type="radio" id="radio-two" name="notaswitch-two" value="optionTwo" />
+						<label htmlFor="radio-nine">{this.props.question.optionTwo.text}</label><br />
 					</div>
 					<Link to={`/question/${this.props.question.id}`} className='question'> <div>See Poll</div> </Link>
 					<button
@@ -54,17 +55,16 @@ class Question extends Component {
 
 }
 	function mapStateToProps ( { users , authedUser, questions }, { id } ) {
-		const question = questions[id];
-		const author = users[question.author]
 
 		return {
 			users,
 			authedUser,
-			question: question,
-			author: author
+			question: questions[id],
+			author: users[authedUser] === undefined ? [] :  users[authedUser],
+			answered: users[authedUser] === undefined ? [] : users[authedUser].answers[id]
 		}
 	}
 
 
 
-export default connect(mapStateToProps)(Question);
+export default connect(mapStateToProps)(QuestionCard);
