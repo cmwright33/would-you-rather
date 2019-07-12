@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Question from "./Question.js";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import "react-tabs/style/react-tabs.css";
+import QuestionCard from "./QuestionCard.js";
+
 
 
 class Home extends Component {
@@ -19,14 +20,14 @@ class Home extends Component {
 			    <TabPanel>
 			      	<ul>
 						{this.props.unansweredQuestions.map( (id) => (
-							<Question key = { id } id = { id }/> 
+							<QuestionCard key = { id } id = { id }/> 
 						))}
 					</ul>
 			    </TabPanel>
 			    <TabPanel>
 			      	<ul>
 						{this.props.authUserAnswers.map( (id) => (
-							<Question key = { id } id = { id }/> 
+							<QuestionCard key = { id } id = { id }/> 
 						))}
 					</ul>
 			    </TabPanel>

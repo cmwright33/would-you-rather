@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Question from "./Question.js";
+import QuestionCard from "./QuestionCard.js";
 
 
 class QuestionPage extends Component {
@@ -8,7 +8,7 @@ class QuestionPage extends Component {
 	render(){
 		return(
 			<div>
-				<Question id = {this.props.match.params.id} />
+				<QuestionCard id = {this.props.match.params.id} />
 			</div>
 			)
 	}

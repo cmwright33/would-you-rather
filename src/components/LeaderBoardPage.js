@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Question from "./Question.js";
+import QuestionCard from "./QuestionCard.js";
 
 
 class LeaderBoard extends Component {
