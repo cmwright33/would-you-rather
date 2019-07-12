@@ -36,11 +36,11 @@ class Question extends Component {
 				<form className='save-question' onSubmit={this.handleSubmit}>
 					<div>
 						<input onChange={this.handleChange} type="radio" id="radio-nine" name="notaswitch-two" value="optionOne" />
-						<label for="radio-nine">{this.props.question.optionOne.text}</label><br />
+						<label htmlFor="radio-nine">{this.props.question.optionOne.text}</label><br />
 					</div>
 					<div> 
 						<input onChange={this.handleChange} type="radio" id="radio-nine" name="notaswitch-two" value="optionTwo" />
-						<label for="radio-nine">{this.props.question.optionTwo.text}</label><br />
+						<label htmlFor="radio-nine">{this.props.question.optionTwo.text}</label><br />
 					</div>
 					<Link to={`/question/${this.props.question.id}`} className='question'> <div>See Poll</div> </Link>
 					<button
@@ -54,8 +54,10 @@ class Question extends Component {
 
 }
 	function mapStateToProps ( { users , authedUser, questions }, { id } ) {
+	
 		const question = questions[id];
-		const author = users[question.author]
+		const author = question.author; 
+	
 
 		return {
 			users,

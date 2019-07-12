@@ -17,11 +17,11 @@ class App extends Component {
     return (
       <div>
         <Router>
-        <Nav/>
         { this.props.isLoggedIn ? ( 
           <Login />
         ) : (
         <Fragment>
+          <Nav/>
           <Route path='/' exact component={Home} />
           <Route path='/new'  component={NewQuestion} />
           <Route path='/login' component={Login} />

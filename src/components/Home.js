@@ -1,20 +1,36 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Question from "./Question.js";
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import "react-tabs/style/react-tabs.css";
 
 
 class Home extends Component {
 
 	render(){
-		console.log(this.props.authUserAnswers)
 
 		return(
 			<div>
-				<ul>
-					{this.props.authUserAnswers.map( (id) => (
-						<Question key = { id } id = { id }/> 
-					))}
-				</ul>
+			  <Tabs>
+			    <TabList>
+			      <Tab>Unanswered</Tab>
+			      <Tab>Answered</Tab>
+			    </TabList>
+			    <TabPanel>
+			      	<ul>
+						{this.props.unansweredQuestions.map( (id) => (
+							<Question key = { id } id = { id }/> 
+						))}
+					</ul>
+			    </TabPanel>
+			    <TabPanel>
+			      	<ul>
+						{this.props.authUserAnswers.map( (id) => (
+							<Question key = { id } id = { id }/> 
+						))}
+					</ul>
+			    </TabPanel>
+			  </Tabs>
 			</div>
 			)
 	}
@@ -22,11 +38,15 @@ class Home extends Component {
 }
 	function mapStateToProps ( { questions, users, authedUser } ) {
 
+		const questionIds = Object.keys(questions)
+		const authUserAnswers = Object.keys(users[authedUser].answers)
+		const unansweredQuestions = questionIds.filter(e => !authUserAnswers.includes(e))
 		
 		return {
-			questionIds: Object.keys(questions),
+			questionIds: questionIds,
 			users: users,
-			authUserAnswers: users[authedUser] === undefined ? [] : Object.keys(users[authedUser].answers)
+			authUserAnswers: authUserAnswers,
+			unansweredQuestions: unansweredQuestions
 		}
 	}
 
