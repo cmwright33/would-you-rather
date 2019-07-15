@@ -2,9 +2,15 @@ export const SET_AUTHED_USER = 'SET_AUTHED_USER'
 export const RECEIVE_AUTHED_USER = 'RECEIVE_AUTHED_USER'
 
 export function setAuthedUser (id) {
-  return {
-    type: SET_AUTHED_USER,
-    id,
+  return dispatch => {
+    return new Promise((resolve, reject) => {
+      dispatch({
+    	type: SET_AUTHED_USER,
+    	id,
+      });
+
+      resolve()
+    });
   }
 } 
 

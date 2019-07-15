@@ -28,7 +28,7 @@ class Poll extends Component {
 
 	}
 	render(){
-		console.log(this.props.pollResults)
+		
 		return(
 
 			<div className="question">

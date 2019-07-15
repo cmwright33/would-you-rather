@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { setAuthedUser } from '../actions/authedUser'
-import { Redirect } from 'react-router-dom'
+import { Redirect , Route } from 'react-router-dom'
 
 
 class Login extends Component {
@@ -21,25 +21,32 @@ class Login extends Component {
 		const { userSelected } = this.state
 		const { dispatch } = this.props
 
-		dispatch(setAuthedUser(userSelected))
-
-		this.setState(() => ({
-			userSelected: '',
-			toHome: true
-		}))
+		if(userSelected !== null){
+			console.log(this.props)
+			dispatch(setAuthedUser(userSelected))
+			this.setState(() => ({
+				userSelected: null,
+				toHome: true
+			}))
+			
+		}
 
 	}
 
 	render(){
 
-		if (this.state.toHome === true) {
-	      return <Redirect to='/' />
+	   const { toHome } = this.state
+
+	   if (toHome === true ) {
+	      return <Redirect to='/' push />
 	    }
+
 
 		return(
 			<div>
 				<h3>Log In</h3>
 				<select onChange={this.handleChange} defaultValue=''>
+				<option value=''> Please Select User </option>
 				 {
 					Object.values(this.props.usersSelect).map( (user) => {
 					  return <option key={user.id} value={user.id}> { user.id } </option>
@@ -49,10 +56,18 @@ class Login extends Component {
 				<button onClick={this.handleSubmit} >Submit</button>
 			</div>
 			)
+	    
+
+
 	}
 
 }
-	function mapStateToProps ( { users , authedUser} ) {
+	function mapStateToProps (  { users , authedUser} ) {
+
+		// if( authedUser !== null ){
+		// 	 return <Redirect to='/' push />
+		// }
+
 		return {
 			usersSelect: users,
 			authedUser : authedUser

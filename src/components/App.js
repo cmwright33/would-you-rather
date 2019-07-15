@@ -7,7 +7,8 @@ import  Nav  from './Nav.js';
 import  Login  from './Login.js';
 import  QuestionPage  from './QuestionPage.js';
 import  LeaderBoardPage from './LeaderBoardPage.js';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import  PageNotFound from './PageNotFound.js'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 class App extends Component {
   componentDidMount() {
@@ -16,17 +17,19 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Router>
+        <Router >
         { this.props.isLoggedIn ? ( 
           <Login />
         ) : (
         <Fragment>
           <Nav/>
-          <Route path='/' exact component={Home} />
-          <Route path='/new'  component={NewQuestion} />
-          <Route path='/login' component={Login} />
-          <Route path='/question/:id' component={QuestionPage} />
-          <Route path='/leaderboard' component={LeaderBoardPage} />
+          <Switch>
+            <Route path='/' exact component={Home} />
+            <Route path='/new'  component={NewQuestion} />
+            <Route path='/question/:id' component={QuestionPage} />
+            <Route path='/leaderboard' component={LeaderBoardPage} />
+            <Route component={PageNotFound} />
+           </Switch>
         </Fragment>  
           )}
        </Router>

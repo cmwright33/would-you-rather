@@ -1,16 +1,23 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Redirect } from 'react-router-dom'
+import { setAuthedUser } from '../actions/authedUser'
 
 
 
 class Nav extends Component  {
 
+  logOutUser = (e) => {
+
+    const { dispatch } = this.props
+    dispatch(setAuthedUser(null));
+  }
+
   render() {
 
    let Welcome;
 
-   if (this.props.activeUser !== undefined) {
+   if (this.props.activeUser !== null) {
       Welcome =  <li>Hello {this.props.activeUser.name}</li>;
     } else {
       Welcome =  <li>Hello, Guest</li>;
@@ -24,7 +31,7 @@ class Nav extends Component  {
          <li><NavLink to='/new' exact activeClassName='active'>New Question</NavLink></li>
           <li><NavLink to='/leaderboard' exact activeClassName='active'>Leaderboard</NavLink></li>
           {Welcome}
-          <li><NavLink to='/login' exact activeClassName='active'> Log Out </NavLink></li>
+          <li><NavLink to='/' onClick={this.logOutUser}exact activeClassName='active'> Log Out </NavLink></li>
         </ul>
       </div>
     )
