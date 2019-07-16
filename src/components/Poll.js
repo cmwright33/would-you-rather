@@ -2,6 +2,8 @@ import React, { Component , Fragment } from 'react'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
 import { handleAnswerQuestion  } from '../actions/shared'
+import { Card, CardImg, CardText, Col, Row, CardHeader,
+  CardTitle, CardSubtitle, Button, Progress } from 'reactstrap';
 
 
 class Poll extends Component {
@@ -32,30 +34,43 @@ class Poll extends Component {
 		return(
 
 			<div className="question">
-				<div> {this.props.author.avatarURL} </div>
-				<div> {this.props.author.name} </div>
-
+				<Card>
+					<CardHeader>{this.props.author.name} asked...</CardHeader>
+					<Row>
+					<Col>
+						<CardImg src={this.props.author.avatarURL} alt="Card image cap" />
+					</Col>
+					<Col>
 				{this.props.answered ? (
 					<div>
-        			<div> Option One {this.props.pollResults.optionOne} / { this.props.pollResults.total}</div>
-        			<div> Option Two {this.props.pollResults.optionTwo} / { this.props.pollResults.total}</div>
+					<div className="text-center">
+						Option One
+						<Progress animated value={this.props.pollResults.optionOne} />
+					</div>
+        			<div>
+        				Option Two 
+        				<Progress animated value={this.props.pollResults.optionTwo} />
+        			</div>
         			</div>
 			      ) : (
 			        <form className='save-question' onSubmit={this.handleSubmit}>
-						<div>
+						<CardText>
 							<input onChange={this.handleChange} type="radio" id="radio-one" name="notaswitch-two" value="optionOne" />
 							<label htmlFor="radio-nine">{this.props.question.optionOne.text}</label><br />
-						</div>
-						<div> 
+						</CardText>
+						<CardText>
 							<input onChange={this.handleChange} type="radio" id="radio-two" name="notaswitch-two" value="optionTwo" />
 							<label htmlFor="radio-nine">{this.props.question.optionTwo.text}</label><br />
-						</div>
-						<button
+						</CardText> 
+						<Button
 						className='btn'
 	            		type='submit'>
-						Submit</button>
+						Submit</Button>
 					</form>
-			      )}			
+			      )}
+					</Col>
+					</Row>
+				</Card>			
 			</div>
 			)
 	}
@@ -68,9 +83,8 @@ class Poll extends Component {
 		const answered = users[authedUser].answers[id] === undefined ? false : true;
 		const total = question.optionOne.votes.length + question.optionTwo.votes.length;
 		const pollResults = {
-			optionOne: question.optionOne.votes.length,
-			optionTwo: question.optionTwo.votes.length,
-			total: question.optionOne.votes.length + question.optionTwo.votes.length
+			optionOne: question.optionOne.votes.length / total * 100,
+			optionTwo: question.optionTwo.votes.length / total * 100,
 		}
 
 		return {

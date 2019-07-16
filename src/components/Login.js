@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { setAuthedUser } from '../actions/authedUser'
 import { Redirect , Route } from 'react-router-dom'
+import { Card, CardImg, CardText, Col, Row, CardHeader,
+  CardTitle, CardSubtitle, Button } from 'reactstrap';
 
 
 class Login extends Component {
@@ -44,16 +46,19 @@ class Login extends Component {
 
 		return(
 			<div>
-				<h3>Log In</h3>
-				<select onChange={this.handleChange} defaultValue=''>
-				<option value=''> Please Select User </option>
-				 {
-					Object.values(this.props.usersSelect).map( (user) => {
-					  return <option key={user.id} value={user.id}> { user.id } </option>
-					})
-				 }
-				</select>
-				<button onClick={this.handleSubmit} >Submit</button>
+				<Card>
+					<CardHeader h3>Log In</CardHeader>
+									
+					<select onChange={this.handleChange} defaultValue=''>
+					<option value=''> Please Select User </option>
+					 {
+						Object.values(this.props.usersSelect).map( (user) => {
+						  return <option key={user.id} value={user.id}> { user.id } </option>
+						})
+					 }
+					</select>
+					<Button onClick={this.handleSubmit} >Submit</Button>
+				</Card>
 			</div>
 			)
 	    

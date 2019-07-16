@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import "react-tabs/style/react-tabs.css";
 import QuestionCard from "./QuestionCard.js";
-
+import {Col} from 'reactstrap';
 
 
 class Home extends Component {
@@ -12,6 +12,7 @@ class Home extends Component {
 
 		return(
 			<div>
+				<Col sm="12" md={{ size: 6, offset: 3 }}>
 				  <Tabs>
 				    <TabList>
 				      <Tab>Unanswered</Tab>
@@ -32,6 +33,7 @@ class Home extends Component {
 						</ul>
 				    </TabPanel>
 				  </Tabs>
+				</Col>
 			</div>
 			)
 	}
