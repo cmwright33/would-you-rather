@@ -3,11 +3,12 @@ import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import  Home  from './Home.js';
 import  NewQuestion  from './NewQuestion.js';
-import  Nav  from './Nav.js';
+import  SiteNav  from './SiteNav.js';
 import  Login  from './Login.js';
 import  QuestionPage  from './QuestionPage.js';
 import  LeaderBoardPage from './LeaderBoardPage.js';
 import  PageNotFound from './PageNotFound.js'
+import { Container, Row, Col } from 'reactstrap';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 class App extends Component {
@@ -18,20 +19,23 @@ class App extends Component {
     return (
       <div>
         <Router >
+        <Container>
         { this.props.isLoggedIn ? ( 
           <Login />
         ) : (
         <Fragment>
-          <Nav/>
+          <SiteNav/>
           <Switch>
-            <Route path='/' exact component={Home} />
-            <Route path='/new'  component={NewQuestion} />
-            <Route path='/question/:id' component={QuestionPage} />
-            <Route path='/leaderboard' component={LeaderBoardPage} />
-            <Route component={PageNotFound} />
+            <Col sm="12" md={{ size: 6, offset: 3 }}>
+              <Route path='/' exact component={Home} />
+              <Route path='/new'  component={NewQuestion} />
+              <Route path='/question/:id' component={QuestionPage} />
+              <Route path='/leaderboard' component={LeaderBoardPage} />
+            </Col>
            </Switch>
         </Fragment>  
           )}
+        </Container>
        </Router>
       </div>
     )

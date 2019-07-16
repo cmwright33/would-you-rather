@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
 import { handleAnswerQuestion  } from '../actions/shared'
+import { Card, CardImg, CardText, Col, Row, CardHeader,
+  CardTitle, CardSubtitle, Button } from 'reactstrap';
 
 
 class QuestionCard extends Component {
@@ -11,10 +13,18 @@ class QuestionCard extends Component {
 		return(
 
 			<div className="question-card">
-				<div> {this.props.author.avatarURL} </div>
-				<div> {this.props.author.name} </div>
-				<div> {this.props.question.optionOne.text}</div>
-				<Link to={`/question/${this.props.question.id}`} className='question'> <div>See Poll</div> </Link>
+				<Card>
+					<CardHeader>{this.props.author.name} asked...</CardHeader>
+					<Row>
+					<Col>
+						<CardImg src={this.props.author.avatarURL} alt="Card image cap" />
+					</Col>
+					<Col>
+						<CardText>{this.props.question.optionOne.text}</CardText>
+						<Button><Link to={`/question/${this.props.question.id}`} className='question'>See Poll</Link></Button>
+					</Col>
+					</Row>
+				</Card>
 			</div>
 			)
 	}

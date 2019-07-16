@@ -12,26 +12,26 @@ class Home extends Component {
 
 		return(
 			<div>
-			  <Tabs>
-			    <TabList>
-			      <Tab>Unanswered</Tab>
-			      <Tab>Answered</Tab>
-			    </TabList>
-			    <TabPanel>
-			      	<ul>
-						{this.props.unansweredQuestions.map( (id) => (
-							<QuestionCard key = { id } id = { id }/> 
-						))}
-					</ul>
-			    </TabPanel>
-			    <TabPanel>
-			      	<ul>
-						{this.props.authUserAnswers.map( (id) => (
-							<QuestionCard key = { id } id = { id }/> 
-						))}
-					</ul>
-			    </TabPanel>
-			  </Tabs>
+				  <Tabs>
+				    <TabList>
+				      <Tab>Unanswered</Tab>
+				      <Tab>Answered</Tab>
+				    </TabList>
+				    <TabPanel>
+				      	<ul>
+							{this.props.unansweredQuestions.map( (id) => (
+								<QuestionCard key = { id } id = { id }/> 
+							))}
+						</ul>
+				    </TabPanel>
+				    <TabPanel>
+				      	<ul>
+							{this.props.authUserAnswers.map( (id) => (
+								<QuestionCard key = { id } id = { id }/> 
+							))}
+						</ul>
+				    </TabPanel>
+				  </Tabs>
 			</div>
 			)
 	}
