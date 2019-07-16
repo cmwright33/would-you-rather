@@ -21,18 +21,16 @@ class App extends Component {
         <Router >
         <Container>
         { this.props.isLoggedIn ? ( 
-          <Col sm="12" md={{ size: 6, offset: 3 }}>
+          
           <Login />
-          </Col>
+          
         ) : (
         <Fragment>
           <SiteNav/>
-          <Switch>
-              <Route path='/' exact component={Home} />
-              <Route path='/new'  component={NewQuestion} />
-              <Route path='/question/:id' component={QuestionPage} />
-              <Route path='/leaderboard' component={LeaderBoardPage} />
-           </Switch>
+          <Route path='/' exact component={Home} />
+          <Route path='/new'  component={NewQuestion} />
+          <Route path='/question/:id' component={QuestionPage} />
+          <Route path='/leaderboard' component={LeaderBoardPage} />
         </Fragment>  
           )}
         </Container>

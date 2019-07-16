@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleAddQuestion  } from '../actions/shared'
 import { Link, withRouter, Redirect } from 'react-router-dom'
+import { Col, Button, Card, CardHeader, CardBody, CardTitle, CardText, Form, FormGroup, Input, Label, FormText } from 'reactstrap';
 
 
 class NewQuestion extends Component {
@@ -60,19 +61,35 @@ class NewQuestion extends Component {
 
 		return(
 			<div className="newQuestion">
-				<h2>Create New Question </h2>
-				<div> Complete the question </div>
-				<div> Would you rather... </div>
-				<form className='new-tweet' onSubmit={this.handleSubmit}>
-					<input className='q1' onChange={this.handleChange } placeholder="Enter Option One Text Here"></input>
-					<div> OR </div>
-					<input className='q2' onChange={this.handleChange } placeholder="Enter Option Two Text Here"></input>
-					<button
-					className='btn'
-            		type='submit'
-            		disabled={ (this.state.optionOneText === '' && this.state.optionTwoText === '' ) }>
-					Submit</button>
-				</form>
+				<Col sm="12" md={{ size: 6, offset: 3 }}>
+				<Card>
+					<CardHeader >Create New Question</CardHeader>
+					<CardBody>
+						<CardTitle> Complete the question </CardTitle>
+						<CardText> Would you rather... </CardText>
+						<Form className='text-center' onSubmit={this.handleSubmit}>
+						    <FormGroup row>
+					          <Label for="q1" sm={3} size="md">Option 1</Label>
+					          <Col sm={8}>
+					            <Input className='q1' onChange={this.handleChange } placeholder="Enter Option One Text Here" bsSize="md" />
+					          </Col>
+					        </FormGroup>
+					        <CardText className='text-center'>OR</CardText>
+							<FormGroup row>
+					          <Label for="q1" sm={3} size="md">Option 2</Label>
+					          <Col sm={8}>
+					            <Input className='q2' onChange={this.handleChange } placeholder="Enter Option Two Text Here" bsSize="md" />
+					          </Col>
+					        </FormGroup>
+							<Button
+							className='btn'
+		            		type='submit'
+		            		disabled={ (this.state.optionOneText === '' && this.state.optionTwoText === '' ) }>
+							Submit</Button>
+						</Form>
+					</CardBody>
+				</Card>
+				</Col>
 			</div>
 			)
 	}

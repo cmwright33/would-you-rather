@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { setAuthedUser } from '../actions/authedUser'
 import { Redirect , Route } from 'react-router-dom'
 import { Card, CardImg, CardText, Col, Row, CardHeader,
-  CardTitle, CardSubtitle, Button } from 'reactstrap';
+  CardTitle, CardBody, CardSubtitle, Button } from 'reactstrap';
 
 
 class Login extends Component {
@@ -24,7 +24,6 @@ class Login extends Component {
 		const { dispatch } = this.props
 
 		if(userSelected !== null){
-			console.log(this.props)
 			dispatch(setAuthedUser(userSelected))
 			this.setState(() => ({
 				userSelected: null,
@@ -46,9 +45,11 @@ class Login extends Component {
 
 		return(
 			<div>
+				<Col sm="12" md={{ size: 6, offset: 3 }}>
 				<Card>
 					<CardHeader h3>Log In</CardHeader>
-									
+					<CardBody>
+					<CardText> Please Select A User To Log-In </CardText>
 					<select onChange={this.handleChange} defaultValue=''>
 					<option value=''> Please Select User </option>
 					 {
@@ -58,7 +59,9 @@ class Login extends Component {
 					 }
 					</select>
 					<Button onClick={this.handleSubmit} >Submit</Button>
+					</CardBody>
 				</Card>
+				</Col>
 			</div>
 			)
 	    

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
 import { handleAnswerQuestion  } from '../actions/shared'
 import { Card, CardImg, CardText, Col, Row, CardHeader,
-  CardTitle, CardSubtitle, Button, Progress } from 'reactstrap';
+  CardTitle, CardSubtitle, Button, Progress, CustomInput } from 'reactstrap';
 
 
 class Poll extends Component {
@@ -44,23 +44,21 @@ class Poll extends Component {
 				{this.props.answered ? (
 					<div>
 					<div className="text-center">
-						Option One
+						<CardText>{this.props.question.optionOne.text}</CardText>
 						<Progress animated value={this.props.pollResults.optionOne} />
 					</div>
-        			<div>
-        				Option Two 
+        			<div className="text-center" >
+        				<CardText>{this.props.question.optionTwo.text}</CardText>
         				<Progress animated value={this.props.pollResults.optionTwo} />
         			</div>
         			</div>
 			      ) : (
 			        <form className='save-question' onSubmit={this.handleSubmit}>
 						<CardText>
-							<input onChange={this.handleChange} type="radio" id="radio-one" name="notaswitch-two" value="optionOne" />
-							<label htmlFor="radio-nine">{this.props.question.optionOne.text}</label><br />
+							<CustomInput type="radio" onChange={this.handleChange} id="radio-one" name="notaswitch-two" value="optionOne"  label={this.props.question.optionOne.text}/>
 						</CardText>
 						<CardText>
-							<input onChange={this.handleChange} type="radio" id="radio-two" name="notaswitch-two" value="optionTwo" />
-							<label htmlFor="radio-nine">{this.props.question.optionTwo.text}</label><br />
+						<CustomInput type="radio" onChange={this.handleChange} id="radio-two" name="notaswitch-two" value="optionOne"  label={this.props.question.optionTwo.text}/>
 						</CardText> 
 						<Button
 						className='btn'
