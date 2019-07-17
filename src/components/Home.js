@@ -15,8 +15,8 @@ class Home extends Component {
 				<Col sm="12" md={{ size: 6, offset: 3 }}>
 				  <Tabs>
 				    <TabList>
-				      <Tab>Unanswered</Tab>
-				      <Tab>Answered</Tab>
+				      <Tab>Unanswered Questions</Tab>
+				      <Tab>Answered Questions</Tab>
 				    </TabList>
 				    <TabPanel>
 				      	<ul>

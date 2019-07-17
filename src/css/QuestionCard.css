@@ -1,0 +1,15 @@
+
+
+.question-card {
+    text-transform: capitalize;
+    text-align: left;
+    margin-top: 0.25rem;
+}
+
+.question-card .card-title  {
+	font-weight: 700;
+}  
+
+.question-content{
+	margin-top: 1rem
+}

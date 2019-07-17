@@ -66,7 +66,7 @@ class NewQuestion extends Component {
 					<CardHeader >Create New Question</CardHeader>
 					<CardBody>
 						<CardTitle> Complete the question </CardTitle>
-						<CardText> Would you rather... </CardText>
+						<CardText> Would You Rather... </CardText>
 						<Form className='text-center' onSubmit={this.handleSubmit}>
 						    <FormGroup row>
 					          <Label for="q1" sm={3} size="md">Option 1</Label>

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { setAuthedUser } from '../actions/authedUser'
 import { Redirect , Route } from 'react-router-dom'
+import '../css/Login.css'
 import { Card, CardImg, CardText, Col, Row, CardHeader,
   CardTitle, CardBody, CardSubtitle, Button } from 'reactstrap';
 
@@ -44,13 +45,14 @@ class Login extends Component {
 
 
 		return(
-			<div>
+			<div className="log-in">
+				<Row>
 				<Col sm="12" md={{ size: 6, offset: 3 }}>
 				<Card>
 					<CardHeader h3>Log In</CardHeader>
 					<CardBody>
 					<CardText> Please Select A User To Log-In </CardText>
-					<select onChange={this.handleChange} defaultValue=''>
+					<select className="form-control-lg form-control" onChange={this.handleChange} defaultValue=''>
 					<option value=''> Please Select User </option>
 					 {
 						Object.values(this.props.usersSelect).map( (user) => {
@@ -62,6 +64,7 @@ class Login extends Component {
 					</CardBody>
 				</Card>
 				</Col>
+				</Row>
 			</div>
 			)
 	    

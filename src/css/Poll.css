@@ -1,0 +1,78 @@
+.poll-result {
+    margin-right: 1rem;
+    text-transform: capitalize;
+    margin-top: 0.25rem;
+}
+
+.poll-card {
+    margin-top: 0.25rem;
+}
+
+
+.save-question {
+    text-transform: capitalize;
+    text-align: left;
+    margin-top: 10%;
+}
+
+.poll-result .text-left{
+	margin-top: 1.25rem;
+    border: 1px solid #eee;
+    padding: 7px;
+    background-color: #eee;
+    border-radius: 6px;
+}
+
+
+.progress{
+	box-shadow: inset 1px 1px 17px #4a4a4a;
+}
+
+.save-question .card-title  {
+	font-weight: 700;
+}  
+
+
+.your-selection::before {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    margin: 0;
+    position: absolute;
+    background-color: #28a745;
+    right: 1rem;
+    top: 1.25rem;
+    content: "Your Choice";
+    font-size: 0.2rem;
+    text-align: center;
+    color: #fff;
+    font-weight: 700;
+    padding: 0.5rem;
+}
+
+
+
+.your-selection-two::before {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    margin: 0;
+    position: absolute;
+    background-color: #28a745;
+    right: 1rem;
+    top: 7.6rem;
+    content: "Your Choice";
+    font-size: 0.2rem;
+    text-align: center;
+    color: #fff;
+    font-weight: 700;
+    padding: 0.5rem;
+}
+
+.or-divider{
+	width: 50%;
+	padding: 0rem 0.5rem 0.5rem 0.5rem;
+	text-align: center;
+}

@@ -4,6 +4,7 @@ import { Link, withRouter } from 'react-router-dom'
 import { handleAnswerQuestion  } from '../actions/shared'
 import { Card, CardImg, CardText, Col, Row, CardHeader,
   CardTitle, CardSubtitle, Button, Progress, CustomInput } from 'reactstrap';
+import '../css/Poll.css'
 
 
 class Poll extends Component {
@@ -31,9 +32,11 @@ class Poll extends Component {
 	}
 	render(){
 		
+		console.log(this.props.answerSelected)
+
 		return(
 
-			<div className="question">
+			<div className="poll-card">
 				<Card>
 					<CardHeader>{this.props.author.name} asked...</CardHeader>
 					<Row>
@@ -42,23 +45,26 @@ class Poll extends Component {
 					</Col>
 					<Col>
 				{this.props.answered ? (
-					<div>
-					<div className="text-center">
+					<div className="poll-result">
+					<CardTitle h3>Results:</CardTitle>
+					<div className={"text-left " + (this.props.pollResults.answerSelected === 'optionOne' ? 'your-selection' : 'tetwetw') }>
 						<CardText>{this.props.question.optionOne.text}</CardText>
-						<Progress animated value={this.props.pollResults.optionOne} />
+						<Progress animated value={this.props.pollResults.optionOnePercent}>{this.props.pollResults.optionOne} / {this.props.pollResults.total }</Progress>
 					</div>
-        			<div className="text-center" >
+        			<div className={"text-left " + (this.props.pollResults.answerSelected === 'optionTwo' ? 'your-selection-two' : 'werwew') } >
         				<CardText>{this.props.question.optionTwo.text}</CardText>
-        				<Progress animated value={this.props.pollResults.optionTwo} />
+        				<Progress animated value={this.props.pollResults.optionTwoPercent}>{this.props.pollResults.optionTwo} / {this.props.pollResults.total }</Progress>
         			</div>
         			</div>
 			      ) : (
 			        <form className='save-question' onSubmit={this.handleSubmit}>
+			     		<CardTitle>Would You Rather...</CardTitle>
 						<CardText>
-							<CustomInput type="radio" onChange={this.handleChange} id="radio-one" name="notaswitch-two" value="optionOne"  label={this.props.question.optionOne.text}/>
+						<CustomInput type="radio" onChange={this.handleChange} id="radio-one" name="notaswitch-two" value="optionOne"  label={this.props.question.optionOne.text}/>
 						</CardText>
+						<div className="or-divider">OR</div>
 						<CardText>
-						<CustomInput type="radio" onChange={this.handleChange} id="radio-two" name="notaswitch-two" value="optionOne"  label={this.props.question.optionTwo.text}/>
+						<CustomInput type="radio" onChange={this.handleChange} id="radio-two" name="notaswitch-two" value="optionTwo"  label={this.props.question.optionTwo.text}/>
 						</CardText> 
 						<Button
 						className='btn'
@@ -79,10 +85,20 @@ class Poll extends Component {
 		const question = questions[id];
 		const author = users[question.author]; 
 		const answered = users[authedUser].answers[id] === undefined ? false : true;
+		let answerSelected = '';
+		if(answered){
+			answerSelected = users[authedUser].answers[id]
+			console.log(answerSelected === 'optionOne' ? true: false)
+		}
+
 		const total = question.optionOne.votes.length + question.optionTwo.votes.length;
 		const pollResults = {
-			optionOne: question.optionOne.votes.length / total * 100,
-			optionTwo: question.optionTwo.votes.length / total * 100,
+			optionOnePercent: question.optionOne.votes.length / total * 100,
+			optionTwoPercent: question.optionTwo.votes.length / total * 100,
+			optionOne: question.optionOne.votes.length ,
+			optionTwo: question.optionTwo.votes.length ,
+			total: total,
+			answerSelected: answerSelected
 		}
 
 		return {

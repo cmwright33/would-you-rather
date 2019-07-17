@@ -1,0 +1,16 @@
+li.nav-item {
+    padding: 5px;
+}
+
+.nav-item a {
+	text-decoration: none;
+	color: #fff;
+}
+
+.nav-item {
+	color: #fff;
+}
+
+.active{
+	font-weight: bold;
+}

@@ -4,6 +4,7 @@ import { Link, withRouter } from 'react-router-dom'
 import { handleAnswerQuestion  } from '../actions/shared'
 import { Card, CardImg, CardText, Col, Row, CardHeader,
   CardTitle, CardSubtitle, Button } from 'reactstrap';
+import '../css/QuestionCard.css'
 
 
 class QuestionCard extends Component {
@@ -19,9 +20,10 @@ class QuestionCard extends Component {
 					<Col>
 						<CardImg src={this.props.author.avatarURL} alt="Card image cap" />
 					</Col>
-					<Col>
-						<CardText>{this.props.question.optionOne.text}</CardText>
-						<Button><Link to={`/question/${this.props.question.id}`} className='question'>See Poll</Link></Button>
+					<Col className="question-content">
+						<CardTitle>Would You Rather...</CardTitle>
+						<CardText>{this.props.question.optionOne.text}...</CardText>
+						<Link to={`/question/${this.props.question.id}`} className='question'><Button>See Poll</Button></Link>
 					</Col>
 					</Row>
 				</Card>
