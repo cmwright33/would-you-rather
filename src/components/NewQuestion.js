@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleAddQuestion  } from '../actions/shared'
-import { Link, withRouter, Redirect } from 'react-router-dom'
-import { Col, Button, Card, CardHeader, CardBody, CardTitle, CardText, Form, FormGroup, Input, Label, FormText } from 'reactstrap';
+import { Redirect } from 'react-router-dom'
+import { Col, Button, Card, CardHeader, CardBody, CardTitle, CardText, Form, FormGroup, Input, Label } from 'reactstrap';
 
 
 class NewQuestion extends Component {
@@ -16,10 +16,7 @@ class NewQuestion extends Component {
 		
 	}
 
-	handleChange = (e) => {
-
-		const question = e.target.value 
-		
+	handleChange = (e) => {		
 
 		if(e.target.className === 'q1'){	
 			const optionOneText = e.target.value 

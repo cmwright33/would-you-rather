@@ -19,7 +19,6 @@ export function handleInitialData () {
 
 export function handleAddQuestion (question) {
   return (dispatch, getState) => {
-    const { authedUser } = getState()
 
     return saveQuestion(question)
       .then((question) => {

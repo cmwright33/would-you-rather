@@ -1,14 +1,23 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
-import QuestionCard from "./QuestionCard.js";
 
 
 class LeaderBoard extends Component {
 
 	render(){
+		console.log(this.props.users)
 		return(
 			<div>
-				<h2>LeaderBoard</h2>
+				{
+					this.props.userKeys.map( key => (
+						<Fragment>
+						<div> { this.props.users[key].name }</div>
+						<div>  has asked: { this.props.users[key].questions.length } Questions</div>
+						<div>  has answered: { Object.keys(this.props.users[key].answers).length } Questions</div>
+						<div>  for a total of : { Object.keys(this.props.users[key].answers).length + this.props.users[key].questions.length } Points</div>
+						</Fragment>
+					))
+				}
 			</div>
 			)
 	}
@@ -16,8 +25,12 @@ class LeaderBoard extends Component {
 }
 	function mapStateToProps ( { users, authedUser } ) {
 
+		const userKeys = Object.keys(users)
+
+
 		return {
 			users: users,
+			userKeys: userKeys
 		}
 	}
 

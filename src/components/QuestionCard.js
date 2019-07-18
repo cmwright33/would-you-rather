@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link, withRouter } from 'react-router-dom'
-import { handleAnswerQuestion  } from '../actions/shared'
+import { Link } from 'react-router-dom'
 import { Card, CardImg, CardText, Col, Row, CardHeader,
-  CardTitle, CardSubtitle, Button } from 'reactstrap';
+  CardTitle, Button } from 'reactstrap';
 import '../css/QuestionCard.css'
 
 
@@ -39,7 +38,6 @@ class QuestionCard extends Component {
 
 		const question = questions[id];
 		const author = users[question.author]; 
-
 
 		return {
 			users,

@@ -9,7 +9,7 @@ export default function	users (state= {}, action) {
 				...action.users
 			}
 		case ADD_QUESTION_TO_USER :
-	      const { question , author, id } = action.question
+	      const { author, id } = action.question
 		      return {
 		        ...state,
 		        [author]: {

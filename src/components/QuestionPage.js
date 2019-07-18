@@ -8,7 +8,7 @@ class QuestionPage extends Component {
 
 	render(){
 		return(
-			<div>
+			<div className="question-page">
 				<Col sm="12" md={{ size: 6, offset: 3 }}>
 					<Poll id = {this.props.match.params.id} />
 				</Col>

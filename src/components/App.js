@@ -8,7 +8,8 @@ import  Login  from './Login.js';
 import  QuestionPage  from './QuestionPage.js';
 import  LeaderBoardPage from './LeaderBoardPage.js';
 import  PageNotFound from './PageNotFound.js'
-import { Container, Row, Col } from 'reactstrap';
+import '../css/App.css'
+import { Container } from 'reactstrap';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 class App extends Component {
@@ -17,7 +18,7 @@ class App extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="app-container">
         <Router >
         <Container>
         { this.props.isLoggedIn ? ( 
@@ -27,10 +28,13 @@ class App extends Component {
         ) : (
         <Fragment>
           <SiteNav/>
+          <Switch>
           <Route path='/' exact component={Home} />
-          <Route path='/new'  component={NewQuestion} />
+          <Route path='/add'  component={NewQuestion} />
           <Route path='/question/:id' component={QuestionPage} />
           <Route path='/leaderboard' component={LeaderBoardPage} />
+          <Route component={PageNotFound} />
+          </Switch>
         </Fragment>  
           )}
         </Container>

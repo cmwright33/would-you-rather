@@ -1,9 +1,8 @@
-import React, { Component , Fragment } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link, withRouter } from 'react-router-dom'
 import { handleAnswerQuestion  } from '../actions/shared'
 import { Card, CardImg, CardText, Col, Row, CardHeader,
-  CardTitle, CardSubtitle, Button, Progress, CustomInput } from 'reactstrap';
+  CardTitle, Button, Progress, CustomInput } from 'reactstrap';
 import '../css/Poll.css'
 
 
@@ -32,7 +31,6 @@ class Poll extends Component {
 	}
 	render(){
 		
-		console.log(this.props.answerSelected)
 
 		return(
 
