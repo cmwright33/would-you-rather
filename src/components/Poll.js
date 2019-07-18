@@ -44,7 +44,7 @@ class Poll extends Component {
 					<Col>
 				{this.props.answered ? (
 					<div className="poll-result">
-					<CardTitle h3>Results:</CardTitle>
+					<CardTitle>Results:</CardTitle>
 					<div className={"text-left " + (this.props.pollResults.answerSelected === 'optionOne' ? 'your-selection' : 'tetwetw') }>
 						<CardText>{this.props.question.optionOne.text}</CardText>
 						<Progress animated value={this.props.pollResults.optionOnePercent}>{this.props.pollResults.optionOne} / {this.props.pollResults.total }</Progress>
@@ -57,13 +57,13 @@ class Poll extends Component {
 			      ) : (
 			        <form className='save-question' onSubmit={this.handleSubmit}>
 			     		<CardTitle>Would You Rather...</CardTitle>
-						<CardText>
+					
 						<CustomInput type="radio" onChange={this.handleChange} id="radio-one" name="notaswitch-two" value="optionOne"  label={this.props.question.optionOne.text}/>
-						</CardText>
+						
 						<div className="or-divider">OR</div>
-						<CardText>
+						
 						<CustomInput type="radio" onChange={this.handleChange} id="radio-two" name="notaswitch-two" value="optionTwo"  label={this.props.question.optionTwo.text}/>
-						</CardText> 
+						 
 						<Button
 						className='btn'
 	            		type='submit'>
@@ -82,7 +82,6 @@ class Poll extends Component {
 
 
 		const question = questions[id];
-		console.log(question)
 		const author = users[question.author]; 
 		const answered = users[authedUser].answers[id] === undefined ? false : true;
 		let answerSelected = '';

@@ -1,9 +1,8 @@
-import React, { Component , Fragment } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 import '../css/LeaderboardPage.css'
-import { Card, CardImg, CardText, Col, Row, CardHeader,
-  CardTitle, Button } from 'reactstrap';
+import { Card, CardImg, CardText, Col, Row,
+  CardTitle } from 'reactstrap';
 
 class LeaderBoard extends Component {
 
@@ -13,7 +12,7 @@ class LeaderBoard extends Component {
 			<div>
 				{
 					this.props.userKeys.map( key => (
-						<Card className='leaderboard-content card col-sm-10 col-md-8 offset-md-2'>
+						<Card key={key} className='leaderboard-content card col-sm-10 col-md-8 offset-md-2'>
 							<Row>
 								<Col>
 									<CardImg src={this.props.users[key].avatarURL} alt="Card image cap" />
