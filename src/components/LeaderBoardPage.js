@@ -1,6 +1,7 @@
 import React, { Component , Fragment } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import '../css/LeaderboardPage.css'
 import { Card, CardImg, CardText, Col, Row, CardHeader,
   CardTitle, Button } from 'reactstrap';
 
@@ -12,18 +13,18 @@ class LeaderBoard extends Component {
 			<div>
 				{
 					this.props.userKeys.map( key => (
-						<Card className='card col-sm-10 col-md-8 offset-md-2'>
+						<Card className='leaderboard-content card col-sm-10 col-md-8 offset-md-2'>
 							<Row>
 								<Col>
 									<CardImg src={this.props.users[key].avatarURL} alt="Card image cap" />
 								</Col>
-								<Col className="leaderboard-content">
+								<Col>
 									<CardTitle>{ this.props.users[key].name }</CardTitle>
-									<CardText>  has asked: { this.props.users[key].questions.length } Questions</CardText>
-									<CardText>  has answered: { Object.keys(this.props.users[key].answers).length } Questions</CardText>
+									<CardText>  Questions Asked : { this.props.users[key].questions.length }</CardText>
+									<CardText>  Questions Answered : { Object.keys(this.props.users[key].answers).length }</CardText>
 								</Col>
 								<Col>
-									<div>  for a total of : { Object.keys(this.props.users[key].answers).length + this.props.users[key].questions.length } Points</div>
+									<div className="total-score-container" > <span className="total-score-label" >Total Score</span><span className="total-score">{ Object.keys(this.props.users[key].answers).length + this.props.users[key].questions.length } Points </span></div>
 								</Col>
 							</Row>
 						</Card>
@@ -41,7 +42,7 @@ class LeaderBoard extends Component {
 
 		return {
 			users: users,
-			userKeys: userKeys
+			userKeys: userKeys.sort(  (a, b) => ( (Object.keys(users[b].answers).length + users[b].questions.length) - (Object.keys(users[a].answers).length + users[a].questions.length )))
 		}
 	}
 

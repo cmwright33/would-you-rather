@@ -1,3 +1,7 @@
 .newQuestion, .home-container, .log-in, .poll-card, .question-page{
 	margin-top: 2rem
 }
+
+img.card-img {
+    padding: .5rem;
+}

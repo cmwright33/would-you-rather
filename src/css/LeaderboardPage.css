@@ -1,0 +1,41 @@
+.leaderboard-content{
+	padding: 1rem;
+	margin-top: 1.5rem;
+}
+
+
+.leaderboard-content .card-title {
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+
+
+.leaderboard-content .total-score-label {
+    display: block;
+    text-align: center;
+}
+
+.leaderboard-content .total-score {
+
+    text-align: center;
+    display: block;
+    padding: 1rem;
+    font-size: 1.5rem;
+
+}
+
+
+.leaderboard-content .total-score-container{
+    position: relative;
+    margin-top: 30%;
+    background: #e4e4e4;
+    border-radius: 8px;
+    width: 75%;	
+}
+
+
+.leaderboard-content .card-text{
+	padding-top: 0.5rem;
+	font-size: 1.1rem;
+}
