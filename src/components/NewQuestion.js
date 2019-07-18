@@ -18,22 +18,22 @@ class NewQuestion extends Component {
 
 	handleChange = (e) => {		
 
-		if(e.target.className === 'q1'){	
+		if(e.target.className === 'q1 form-control-md form-control'){	
 			const optionOneText = e.target.value 
 			this.setState({ optionOneText })
-			
+		
 		}else{
+		
 			const optionTwoText = e.target.value 
 			this.setState({ optionTwoText })
 			
 		}
 
-
 	}
 
 
 	handleSubmit = (e) => {
-
+		console.log(this.state )
 		e.preventDefault()
 
 	    const { optionOneText, optionTwoText , author } = this.state
@@ -73,7 +73,7 @@ class NewQuestion extends Component {
 					        </FormGroup>
 					        <CardText className='text-center'>OR</CardText>
 							<FormGroup row>
-					          <Label for="q1" sm={3} size="md">Option 2</Label>
+					          <Label for="q2" sm={3} size="md">Option 2</Label>
 					          <Col sm={8}>
 					            <Input className='q2' onChange={this.handleChange } placeholder="Enter Option Two Text Here" bsSize="md" />
 					          </Col>

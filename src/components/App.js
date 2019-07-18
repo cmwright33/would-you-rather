@@ -22,9 +22,9 @@ class App extends Component {
         <Router >
         <Container>
         { this.props.isLoggedIn ? ( 
-          
+          <Switch>
           <Login />
-          
+          </Switch>
         ) : (
         <Fragment>
           <SiteNav/>

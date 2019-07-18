@@ -80,7 +80,9 @@ class Poll extends Component {
 }
 	function mapStateToProps ( { users , authedUser, questions }, { id } ) {
 
+
 		const question = questions[id];
+		console.log(question)
 		const author = users[question.author]; 
 		const answered = users[authedUser].answers[id] === undefined ? false : true;
 		let answerSelected = '';

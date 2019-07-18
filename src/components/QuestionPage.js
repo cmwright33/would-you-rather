@@ -2,11 +2,16 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Poll from "./Poll.js";
 import {Col} from 'reactstrap';
+import { Redirect } from 'react-router-dom'
 
 
 class QuestionPage extends Component {
 
+
 	render(){
+		if(this.props.questions[this.props.match.params.id] === undefined) {
+		    return <Redirect to='/' />
+		}
 		return(
 			<div className="question-page">
 				<Col sm="12" md={{ size: 6, offset: 3 }}>
@@ -17,11 +22,13 @@ class QuestionPage extends Component {
 	}
 
 }
-	function mapStateToProps ( { users, authedUser } ) {
+	function mapStateToProps ( { users, authedUser, questions } ) {
 
+		
 
 		return {
 			users: users,
+			questions: questions
 		}
 	}
 
