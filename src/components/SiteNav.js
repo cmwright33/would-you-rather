@@ -14,7 +14,6 @@ import {
 class SiteNav extends Component  {
 
   logOutUser = (e) => {
-
     const { dispatch } = this.props
     dispatch(setAuthedUser(null));
   }
@@ -23,7 +22,7 @@ class SiteNav extends Component  {
 
    let Welcome;
 
-   if (this.props.activeUser !== null) {
+   if (this.props.activeUser !== undefined) {
       Welcome =  <NavItem> Hello, {this.props.activeUser.name}</NavItem> ;
     } else {
       Welcome =  <NavItem>Hello, Guest</NavItem>;

@@ -15,34 +15,49 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData())
+    
   }
+
+
+
   render() {
     return (
       <div className="app-container">
         <Router >
         <Container>
-        { this.props.isLoggedIn ? ( 
-          <Switch>
-          <Login />
-          </Switch>
-        ) : (
         <Fragment>
           <SiteNav/>
-          <Switch>
-          <Route path='/' exact component={Home} />
-          <Route path='/add'  component={NewQuestion} />
-          <Route path='/question/:id' component={QuestionPage} />
-          <Route path='/leaderboard' component={LeaderBoardPage} />
-          <Route component={PageNotFound} />
-          </Switch>
+          <Routes isLoggedIn = {this.props.isLoggedIn}/>
         </Fragment>  
-          )}
         </Container>
        </Router>
       </div>
     )
   }
 }
+
+function Routes(props){
+
+  const isLoggedIn = props.isLoggedIn === undefined ? false : props.isLoggedIn
+
+  return (
+    <div>
+      <Switch>
+        {
+          isLoggedIn ? <Login/> :
+            <Fragment>
+            <Route path='/' exact component={Home} />
+            <Route path='/add' exact component={NewQuestion} />
+            <Route path='/question/:id' exact component={QuestionPage} />
+            <Route path='/leaderboard' exact component={LeaderBoardPage} />
+            <Route component={PageNotFound} />
+            </Fragment>
+        }
+      </Switch>
+    </div>
+  )
+}
+
 
   function mapStateToProps ( { authedUser, users } ) {
     return {

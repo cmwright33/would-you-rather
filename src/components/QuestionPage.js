@@ -10,7 +10,7 @@ class QuestionPage extends Component {
 
 	render(){
 		if(this.props.questions[this.props.match.params.id] === undefined) {
-		    return <Redirect to='/' />
+		    return <Redirect to='/login' />
 		}
 		return(
 			<div className="question-page">
